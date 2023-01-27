@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Meta tags Obrigatórias -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+  <title>Olá, mundo!</title>
+
+  <style type="text/css">
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 50;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+  }
+
+  th{
+    border: 0px solid #ffffff;
+    color: #ffffff;
+    text-align: center;
+    font-family: Verdana, Arial, Helvetica;
+    font-size: 14px;
+    text-align: left;
+    background-color: #007cc2;
+   }
+   td {
+   border: 3px solid #ffffff;
+   color: #5d5d5d;
+   font-size: 12px;
+   font-weight: normal;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   background-color: #efeeee;
+   text-align: left;
+   table-layout: fixed;
+   height: 100px;
+   transition: height 0.4s;
+   /*propriedade desejada*/
+     max-width: 100px;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     transition: all ease 0.7s;
+   }
+
+   td:hover {
+       height: 100%;
+       max-width: 100px;
+       overflow: auto;
+       text-overflow: ellipsis;
+       white-space: initial;
+   }
+
+</style>
+
+</head>
+
+<body>
+
+  <body class="bg-light">
+
+    <table class="table table-striped" id='table'>
+    </table>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"></script>
+  </body>
+
+</html>
+
+<script>
+  function preencheTabelaPedidos() {
+    var table = $("table");
+    table.empty();
+
+    table.append("<tr>" +
+      "<th style='min-width:200px;'>Nome Cliente</th>" +
+      "<th style='min-width:300px;'>Descrição Pedido</th>" +
+      "<th style='min-width:150px;'>Telefone</th>" +
+      "<th>Instagram</th>" +
+      "<th>Endereço</th>" +
+      "<th>Prioritário</th>" +
+      "<th>Data de Entrega Estimada</th>" +
+      "<th>Data de Produção Estimada</th>" +
+      "<th>Excluir</th>" +
+      "<th>Informar Pagamento</th>" +
+      "</tr>");
+
+    let data = JSON.stringify({
+      key: "listarPedido"
+    });
+
+    $.ajax({
+      type: 'POST',
+      url: '/site pam/api.php/Operacoes',
+      data: data,
+      success: function (resultado, teste, teste2) {
+
+        let objetos = JSON.parse(resultado);
+        let auxiliar = objetos.length;
+
+            while (auxiliar != 0) {
+              table.append("<tr>" +
+                "<td>" + objetos[auxiliar - 1].nome + "</td>" +
+                "<td>" + objetos[auxiliar - 1].descricaoPedido + "</td>" +
+                "<td>" + objetos[auxiliar - 1].celular + "</td>" +
+                "<td>" + objetos[auxiliar - 1].instagram + "</td>" +
+                "<td>" + objetos[auxiliar - 1].endereco + "</td>" +
+                "<td>" + objetos[auxiliar - 1].prioritario + "</td>" +
+                "<td>" + objetos[auxiliar - 1].dataEntregaEstimada + "</td>" +
+                "<td>" + objetos[auxiliar - 1].dataProducaoEstimada + "</td>" +
+                "<td>"
+                +"<button type='button' class='btn btn-danger'"+
+                " onclick='Excluir(" + objetos[auxiliar - 1].Id +")'>"
+                +"Excluir"+
+                "</button></td>" +
+                "<td>"
+                  +"<button type='button' class='btn btn-success'"+
+                  " onclick='Excluir(" + objetos[auxiliar - 1].Id +")'>"
+                  +"Pagar"+
+                  "</button></td>" +
+                "</tr>");
+              auxiliar--;
+            }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        debugger
+      }
+    });
+
+  }
+
+  $(document).ready(function () {
+    preencheTabelaPedidos();
+  });
+
+  function cadastrarPedidos() {
+
+    let prioritario = 0;
+
+    if ($("#Prioritario").is(':checked')) {
+      prioritario = 1;
+    }
+
+    let data = JSON.stringify({
+      key: "cadastrarPedido",
+      nome: $("#primeiroNome").val(), descricao: $("#exampleFormControlTextarea1").val(), instagram: $("#nickname").val(), email: $("#email").val(),
+      celular: $("#celular").val(), endereco: $("#endereco").val(), enderecoSecundario: $("#endereco2").val(), pais: $("#pais").val(), estado: $("#estado").val(),
+      cep: $("#cep").val(), dataEntregaEstimada: $("#cc-expiracao").val(),
+      dataProducaoEstimada: $("#cc-expiracao-producao").val(), prioritario: prioritario
+    });
+
+    $.ajax({
+      type: 'POST',
+      url: '/site pam/api.php/Operacoes',
+      data: data,
+      success: function (resultado, teste, teste2, teste3) {
+        debugger
+        alert('data: ' + resultado);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        debugger
+      },
+      // contentType: "application/json",
+      //dataType: 'json'
+    });
+  }
+
+  $('#Prioritario').change(function () {
+    if (this.checked) {
+      console.log('checked')
+      $('#estimativa').show();
+    }
+    if (!this.checked) {
+      console.log('checkedN')
+
+      $('#estimativa').hide();
+    }
+  });
+</script>

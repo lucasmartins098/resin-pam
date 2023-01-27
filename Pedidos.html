@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Meta tags Obrigatórias -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+  <title>Olá, mundo!</title>
+</head>
+
+<body>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="resin.jpg" alt="" width="72" height="72">
+        <h2>Formulário de pedidos</h2>
+        <p class="lead">Abaixo você irá preencher as informações dos pedidos.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <h4 class="mb-3">Informações do pedido</h4>
+
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label for="primeiroNome">Descrição do pedido</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                <div class="invalid-feedback">
+                  É obrigatório inserir a descrição do pedido.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label for="primeiroNome">Nome do Cliente</label>
+                <input type="text" class="form-control" id="primeiroNome" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  É obrigatório inserir um nome válido.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="nickname">Instagram <span class="text-muted">(Opcional)</span></label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" id="nickname" placeholder="Instagram">
+                <div class="invalid-feedback" style="width: 100%;">
+                  Seu nickname é obrigatório.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(Opcional)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="fulano@exemplo.com">
+              <div class="invalid-feedback">
+                Por favor, insira um endereço de e-mail válido, para atualizações de entrega.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="telefone">Número de celular <span class="text-muted">(Opcional)</span></label>
+              <input type="text" class="form-control" id="celular">
+              <div class="invalid-feedback">
+                Por favor, insira um telefone válido, para atualizações de entrega.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="endereco">Endereço do cliente</label>
+              <input type="text" class="form-control" id="endereco" placeholder="Rua tal, nº 0" required>
+              <div class="invalid-feedback">
+                Por favor, insira o endereço de entrega.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
+              <input type="text" class="form-control" id="endereco2" placeholder="Apartamento ou casa">
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="pais">País <span class="text-muted">(Opcional)</span></label>
+                <select class="custom-select d-block w-100" id="pais">
+                  <option value="">Escolha...</option>
+                  <option>Brasil</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor, escolha um país válido.
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="estado">Estado <span class="text-muted">(Opcional)</span></label>
+                <select class="custom-select d-block w-100" id="estado">
+                  <option value="">Escolha...</option>
+                  <option>Espírito Santo</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor, insira um estado válido.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cep">CEP <span class="text-muted">(Opcional)</span></label>
+                <input type="text" class="form-control" id="cep" placeholder="">
+                <div class="invalid-feedback">
+                  É obrigatório inserir um CEP.
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-expiracao">Data de entrega estimada</label>
+                <input type="text" class="form-control campoData" id="cc-expiracao" placeholder="" required>
+                <div class="invalid-feedback">
+                  Data de entrega é obrigatória.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="Prioritario">
+              <label class="form-check-label" for="exampleCheck1">Prioritário</label>
+            </div>
+            </br>
+            <div class="row" id="estimativa">
+              <div class="col-md-6 mb-3">
+                <label for="cc-expiracao">Data de início de produção estimada</label>
+                <input type="text" class="form-control campoData" id="cc-expiracao-producao" placeholder="" required>
+                <div class="invalid-feedback">
+                  Data de entrega é obrigatória.
+                </div>
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" onclick="cadastrarPedidos()" type="button">Confirme o pedido</button>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022 Resin Pam - Te amo S2</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacidade</a></li>
+          <li class="list-inline-item"><a href="#">Termos</a></li>
+          <li class="list-inline-item"><a href="#">Suporte</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"></script>
+  </body>
+
+</html>
+
+<script>
+  $(document).ready(function () {
+    $('#estimativa').hide();
+    $(".campoData").mask("99/99/9999");
+  });
+
+  function cadastrarPedidos() {
+
+    let prioritario = 0;
+
+    if($("#Prioritario").is(':checked'))
+    {
+      prioritario = 1;
+    }
+
+    let data = JSON.stringify({
+      key: "cadastrarPedido",
+      nome: $("#primeiroNome").val(), descricao: $("#exampleFormControlTextarea1").val(), instagram: $("#nickname").val(), email: $("#email").val(),
+      celular: $("#celular").val(), endereco: $("#endereco").val(), enderecoSecundario: $("#endereco2").val(), pais: $("#pais").val(), estado: $("#estado").val(), 
+      cep: $("#cep").val(), dataEntregaEstimada: $("#cc-expiracao").val(), 
+      dataProducaoEstimada: $("#cc-expiracao-producao").val(), prioritario: prioritario });
+
+    $.ajax({
+      type: 'POST',
+      url: '/site pam/api.php/Operacoes',
+      data: data,
+      success: function (resultado, teste, teste2, teste3) {
+        debugger
+         alert('data: ' + resultado); 
+        },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+      debugger
+    },
+     // contentType: "application/json",
+      //dataType: 'json'
+    });
+  }
+
+  $('#Prioritario').change(function () {
+    if (this.checked) {
+      console.log('checked')
+      $('#estimativa').show();
+    }
+    if (!this.checked) {
+      console.log('checkedN')
+
+      $('#estimativa').hide();
+    }
+  });
+</script>
