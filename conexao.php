@@ -1,8 +1,8 @@
 <?php
 abstract class Conexao {
 
-	const USER = "root";
-	const PASS = "";
+	const USER = "u290548490_root";
+	const PASS = "@Cdlj4401@#";
 
 	private static $instance = null;
 
@@ -10,7 +10,7 @@ abstract class Conexao {
 
 		try {
 			if (self::$instance == null):
-				$dsn = "mysql:host=127.0.0.1:3308;dbname=resin";
+				$dsn = "mysql:host=127.0.0.1:3306;dbname=u290548490_resin";
 				self::$instance = new PDO($dsn, self::USER, self::PASS);
 				self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
